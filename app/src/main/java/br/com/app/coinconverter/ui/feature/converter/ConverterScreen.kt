@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.offset
@@ -59,51 +60,63 @@ fun ConverterContent() {
         }
     ) { innerPadding ->
 
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
                 .padding(16.dp)
-                .consumeWindowInsets(innerPadding)
-                .systemBarsPadding()
-            ,
-            contentAlignment = Alignment.Center
         ) {
 
-            Column {
-                CurrencyField(
-                    currencies = listOf("USD", "BRL", "EUR"),
-                    selectCurrency = "USD",
-                    currencyAmount = "0.00",
-                    onCurrencySelector = {},
-                    onCurrencyAmountChanged = {},
-                )
+            Box {
 
-                Spacer(Modifier.height(8.dp))
+                Column {
+                    CurrencyField(
+                        currencies = listOf("USD", "BRL", "EUR"),
+                        selectCurrency = "USD",
+                        currencyAmount = "0.00",
+                        onCurrencySelector = {},
+                        onCurrencyAmountChanged = {}
+                    )
 
-                CurrencyField(
-                    currencies = listOf("USD", "BRL", "EUR"),
-                    selectCurrency = "BRL",
-                    currencyAmount = "0.00",
-                    onCurrencySelector = {},
-                    onCurrencyAmountChanged = {},
-                )
+                    Spacer(Modifier.height(8.dp))
+
+                    CurrencyField(
+                        currencies = listOf("USD", "BRL", "EUR"),
+                        selectCurrency = "BRL",
+                        currencyAmount = "0.00",
+                        onCurrencySelector = {},
+                        onCurrencyAmountChanged = {}
+                    )
+                }
+
+                Surface(
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.primary,
+                    border = BorderStroke(0.5.dp, Color.LightGray),
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .zIndex(1f)
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_arrow_downward),
+                        contentDescription = null,
+                        modifier = Modifier.padding(6.dp),
+                        tint = Color.White
+                    )
+                }
             }
 
-            Surface(
-                shape = CircleShape,
-                color = MaterialTheme.colorScheme.primary,
-                border = BorderStroke(0.5.dp, Color.LightGray)
+            Spacer(modifier = Modifier.weight(1f))
+
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_arrow_downward),
-                    contentDescription = null,
-                    modifier = Modifier.padding(6.dp),
-                    tint = Color.White
-                )
+                Text("Converter")
             }
         }
     }
+
 }
 
 
