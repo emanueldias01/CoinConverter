@@ -28,7 +28,7 @@ fun CurrencySelector(
     currencies: List<String>,
     selectCurrency: String,
     onCurrencySelector: (String) -> Unit,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
 
     var expaned by remember{
