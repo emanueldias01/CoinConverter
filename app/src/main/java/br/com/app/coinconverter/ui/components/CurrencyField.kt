@@ -1,7 +1,6 @@
-package br.com.app.coinconverter.ui.components
+package com.example.conversordemoedas.ui.components
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
@@ -22,50 +21,54 @@ import br.com.app.coinconverter.ui.theme.CoinConverterTheme
 @Composable
 fun CurrencyField(
     currencies: List<String>,
-    selectCurrency: String,
+    selectedCurrency: String,
     currencyAmount: String,
-    onCurrencySelector: (String) -> Unit,
+    onCurrencySelected: (String) -> Unit,
     onCurrencyAmountChanged: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
         modifier = modifier,
-        shape = MaterialTheme.shapes.medium
+        shape = MaterialTheme.shapes.medium,
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             CurrencySelector(
                 currencies = currencies,
-                selectCurrency = selectCurrency,
-                onCurrencySelector = onCurrencySelector
+                selectedCurrency = selectedCurrency,
+                onCurrencySelected = onCurrencySelected,
             )
 
             OutlinedTextField(
                 value = currencyAmount,
                 onValueChange = onCurrencyAmountChanged,
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f),
                 textStyle = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.End
+                    textAlign = TextAlign.End,
                 ),
                 placeholder = {
                     Text(
                         text = "0",
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth(),
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.End
+                            textAlign = TextAlign.End,
                         )
-                        )
+                    )
                 },
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number
+                    keyboardType = KeyboardType.Decimal,
                 ),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent
+                    unfocusedBorderColor = Color.Transparent,
+                    errorBorderColor = Color.Transparent,
                 )
             )
         }
@@ -77,12 +80,11 @@ fun CurrencyField(
 private fun CurrencyFieldPreview() {
     CoinConverterTheme {
         CurrencyField(
-            currencies = listOf("USD", "BRL", "EUR"),
-            selectCurrency = "USD",
-            currencyAmount = "0.00",
-            onCurrencySelector = {},
-            onCurrencyAmountChanged = {},
+            currencies = listOf("USD", "EUR", "BRL"),
+            selectedCurrency = "USD",
+            currencyAmount = "",
+            onCurrencySelected = {},
+            onCurrencyAmountChanged = {}
         )
     }
-
 }
