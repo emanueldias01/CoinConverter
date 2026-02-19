@@ -11,6 +11,13 @@ Ele consome dados de cotação em tempo real por meio de requisições HTTP util
 
 ---
 
+## Imagem do projeto
+
+
+<img width=100 src="./images/converter.png"/>
+
+---
+
 ## Funcionalidades
 
 * Conversão entre **BRL, USD e EUR**
