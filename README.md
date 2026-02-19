@@ -14,7 +14,7 @@ Ele consome dados de cotação em tempo real por meio de requisições HTTP util
 ## Telas
 
 
-<img width=100 src="./images/converter.png"/>
+<img width=200 src="./images/converter.png"/>
 
 ---
 
